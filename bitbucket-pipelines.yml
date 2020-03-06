@@ -12,3 +12,21 @@ pipelines:
           - node
         script: # Modify the commands below to build your repository.
           - npm install
+          #- npm run build
+          #- npm test
+          - zip -r application.zip .
+        artifacts: 
+          - application.zip
+    - step:
+        name: "Deploy to Staging"
+        # Track production environments builds using deployments.
+        deployment: staging
+        script:
+        - pipe: atlassian/aws-elasticbeanstalk-deploy:0.5.0
+          variables:
+            AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
+            AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
+            AWS_DEFAULT_REGION: "us-west-1"
+            APPLICATION_NAME: "node-express"
+            ENVIRONMENT_NAME: 'staging'
+            ZIP_FILE: "application.zip"
