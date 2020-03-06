@@ -24,7 +24,7 @@ pipelines:
               APPLICATION_NAME: 'node-express'
               COMMAND: 'upload-only'
               ZIP_FILE: 'application.zip'
-              # S3_BUCKET: 'elasticbeanstalk-ap-southeast-2-542238120592'
+              S3_BUCKET: 'elasticbeanstalk-us-west-1-446039213519'
               VERSION_LABEL: 'deploy-$BITBUCKET_BUILD_NUMBER-multiple'
     - step:
         name: "Deploy to Staging"
