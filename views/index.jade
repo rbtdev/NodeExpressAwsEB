@@ -3,5 +3,13 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
-  p This is the #{env} environment
+  p This is the environment
+  ul
+    li #{env.NODE_ENV}
+    li #{env.RDS_DB_NAME}
+    li #{env.RDS_USERNAME}
+    li #{env.RDS_PASSWORD}
+    li #{env.RDS_HOSTNAME}
+    li #{env.RDS_PORT}
+
   p This is the new version build by pipeline
